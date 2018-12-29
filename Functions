@@ -1,0 +1,51 @@
+1.def my_func(name, surname, age):
+if age < 25:
+print(f'Hello, {name} {surname}. You are young enough.')
+if age >= 25:
+print(f'Hello, {name} {surname}. You are old.')
+def year_of_birth(age):
+print(f'{2018 - age}')
+
+def card_has_errors(cc_number):
+cc_number_list = cc_number.split(" ")
+if len(cc_number_list) != 4:
+# if os.os.environ["region"] = "China"
+# list.len == 3
+print("Bad cc number format! Must have 4 blocks on digits! Try again!")
+return True
+cc_number_str = ''
+
+import re
+import random
+phone_pattern = re.compile(r'(^+[0-9]{12}$)')
+
+name = input('Enter your name: ').capitalize()
+surname = input('Enter your surname: ').capitalize()
+
+full_name = f'{name} {surname}'[::-1]
+print(full_name)
+
+phone = ''
+while True:
+phone = input("Enter number: ")
+if re.match(phone_pattern, phone):
+print('phone is correct')
+else:
+print('phone is not correct :(')
+continue
+break
+
+has_333 = True if phone.count('3') == 3 else False
+has_777 = True if phone.count('7') == 3 else False
+
+if has_333 and has_777:
+print('Unbelievable!!')
+elif has_333:
+print('You have a lucky number!')
+elif has_777:
+print('You have a very lucky number!!')
+
+random_digit = random.randint(0, 9)
+print(f'random number is {random_digit}')
+if phone.count(str(random_digit)) == 4:
+print('You have a randomly lucky number!!')
