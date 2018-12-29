@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sklearn 
+df=pd.read_csv(r'C:\\med_data.csv')
+df
+df=df.fillna(0)
+df
+df.columns = df.columns.to_series().apply(lambda x: x.strip())
+df.plot(x='Pentasa', y='Alfa Normiks', style='o')  
+plt.title('Money Spent vs Vistors')  
+plt.xlabel('Invest')  
+plt.ylabel('Number of vistors')  
+plt.show()
+sns.pairplot(df)
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression ()
+reg
+X=df[['Alfa Normiks']]
+y=df ['Cortiment']
+X
+reg.fit(X,y)
+pred = reg.predict (X)
+pred
+from sklearn import metrics
+metrics.r2_score(y,pred)
+X=df.drop(['Pentasa'], axis=1)
+reg.fit(X,y)
+pred=reg.predict(X)
+pred
+metrics.r2_score(y,pred)
+###Second Leg 
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression ()
+reg
+X=df[['Alfa Normiks']]
+y=df ['Pentasa']
+X
+reg.fit(X,y)
+pred = reg.predict (X)
+pred
+df=pd.DataFrame({'Actual':[y_test],
+                 'Predicted': [y_pred]
+                })
