@@ -1,0 +1,26 @@
+import random
+import csv
+def generate_email(company, max_number):
+number = random.randint(1, max_number)
+return f"{company}{number}@{company}.com"
+companies = ('tesla', 'acura', 'micro')
+last_year_emails = []
+for i in range(50):
+rnd_company = random.choice(companies)
+last_year_emails.append(generate_email(rnd_company, 11))
+print(last_year_emails)
+set_emails = set(last_year_emails)
+output = {}
+for email in set_emails:
+# email == 'tesla1@tesla.com'
+value = email.split('@')
+print(value)
+output[email] = value[0]
+print(output)
+with open('output.csv', 'w', newline='') as csv_file:
+header = ["email", "name"]
+writer = csv.DictWriter(csv_file, fieldnames=header)
+writer.writeheader()
+for key, value in output.items():
+# writer.writerow({'name': value, 'email': key})
+writer.writerow({'name': value})
